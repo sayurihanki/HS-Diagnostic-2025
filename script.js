@@ -388,24 +388,34 @@ function initializeApp() {
 }
 
 function setupIntersectionObserver() {
-    // Add fade-in animation to elements as they come into view
+    // Only set up observer if on landing page to avoid conflicts
+    if (!document.getElementById('landing-page')) return;
+    
+    // Optimized observer for better scroll performance
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -30px 0px'
     };
 
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
+                entry.target.classList.add('visible');
+                entry.target.classList.remove('card-animate');
+                // Stop observing once animation is triggered
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observe all cards for animation on the landing page
-    const cardsToObserve = document.querySelectorAll('.modern-card, .modern-input-section');
-    cardsToObserve.forEach(card => {
-        observer.observe(card);
+    // Initially hide cards that should animate in
+    const cardsToObserve = document.querySelectorAll('.modern-card:not(.featured-assessment-card), .modern-input-section');
+    cardsToObserve.forEach((card, index) => {
+        // Only animate cards after the featured card
+        if (index > 0) {
+            card.classList.add('card-animate');
+            observer.observe(card);
+        }
     });
 }
 

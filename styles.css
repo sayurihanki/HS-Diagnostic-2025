@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     /* Core colors - Dark theme */
     --background: 0 0% 2%;
@@ -127,9 +131,10 @@ body {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
     letter-spacing: -0.01em;
     position: relative;
-    overflow-x: hidden;
 }
 
 /* Floating Orb Background */
@@ -1536,7 +1541,7 @@ p {
     min-height: 100vh;
 }
 
-/* Floating background elements */
+/* Optimized background elements - static for better scroll performance */
 #landing-page::before {
     content: '';
     position: fixed;
@@ -1545,16 +1550,17 @@ p {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.15) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
     z-index: -1;
-    animation: orbFloat 20s ease-in-out infinite alternate;
+    will-change: auto;
 }
 
-@keyframes orbFloat {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(-10px, -10px) scale(1.05); }
+/* Lighter animation that won't interfere with scrolling */
+@keyframes subtleFloat {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
 }
 
 /* Modern Header Section */
@@ -1627,17 +1633,18 @@ p {
     }
 }
 
-/* Modern Card Components */
+/* Modern Card Components - optimized for performance */
 .modern-card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 16px;
     padding: 24px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    will-change: transform;
 }
 
 .modern-card:hover {
@@ -1978,16 +1985,28 @@ p {
     margin-top: 60px;
 }
 
-/* Animation for elements coming into view */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.6s ease forwards;
+/* Optimized animation for elements coming into view */
+.modern-card,
+.modern-input-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.fade-in:nth-child(2) { animation-delay: 0.1s; }
-.fade-in:nth-child(3) { animation-delay: 0.2s; }
-.fade-in:nth-child(4) { animation-delay: 0.3s; }
+.card-animate {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.card-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animation delays */
+.card-animate:nth-child(2).visible { transition-delay: 0.1s; }
+.card-animate:nth-child(3).visible { transition-delay: 0.2s; }
+.card-animate:nth-child(4).visible { transition-delay: 0.3s; }
 
 @keyframes fadeInUp {
     to {
