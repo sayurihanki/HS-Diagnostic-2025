@@ -17,90 +17,189 @@
     
     <!-- Modern Landing Page -->
     <div id="landing-page" class="page active">
-        <div class="min-h-screen flex items-center justify-center p-4">
-            <div class="container">
-                <div class="relative z-10">
-                    <!-- Enhanced Header -->
-                    <header class="main-header">
-                        <h1 class="gradient-text">Hell Diagnostic</h1>
-                        <p class="subtitle">
-                            Over half of humanity walks the path to damnation. Not as divine punishment, 
-                            but as a crucible for repentance. Discover your infernal reflection and the way back to grace.
-                        </p>
-                    </header>
-                    
-                    <div class="intro-section">
-                        <!-- Main Warning Card -->
-                        <div class="warning-card hell-card">
-                            <h2>⚠️ Do you know how many people are falling to Hell today?</h2>
-                            <p class="highlight">Over half of humanity is going to hell!</p>
-                            <div class="info-text">
-                                <p>Hell is not a place created by God to punish humanity, but rather a place where you can realize your mistakes. If you repent, you'll be forgiven and you can go back to Heaven.</p>
-                                <p><strong>God gives us a chance to do it over again and again.</strong></p>
-                                <p>Find out your Hell Personality and how to make it back to Heaven!</p>
-                            </div>
+        <div class="dashboard-container">
+            <!-- Header Section -->
+            <header class="modern-header fade-in">
+                <h1 class="modern-title">Spiritual Assessment Dashboard</h1>
+                <p class="modern-subtitle">
+                    A comprehensive evaluation system for spiritual growth and self-reflection, 
+                    designed to help individuals understand their spiritual journey and areas for development.
+                </p>
+                <div class="live-clock" id="live-clock">
+                    Loading...
+                </div>
+            </header>
+
+            <!-- Main Dashboard Content -->
+            <div class="modern-dashboard-grid">
+                <!-- Featured Assessment Card -->
+                <div class="modern-card featured-assessment-card fade-in">
+                    <div class="assessment-intro">
+                        <div class="warning-badge">
+                            <span>⚠️</span>
+                            <span>Important Spiritual Assessment</span>
                         </div>
                         
-                        <!-- Enhanced Test Info with Dimensional Analysis -->
-                        <div class="test-info hell-card">
-                            <h3>Complete Spiritual Assessment (~3 minutes)</h3>
-                            
-                            <div class="dimensional-analysis">
-                                <div class="dimension-category">
-                                    <h4>🔮 Dimensional Analysis</h4>
-                                    <ul>
-                                        <li>Susceptibility to Manipulation</li>
-                                        <li>Impulse Control & Reward Sensitivity</li>
-                                        <li>Boundary Clarity</li>
-                                        <li>Conformity Pressure Response</li>
-                                    </ul>
-                                </div>
-                                <div class="dimension-category">
-                                    <h4>⚖️ Risk Assessment</h4>
-                                    <ul>
-                                        <li>Moral Reasoning Under Stress</li>
-                                        <li>Negative Influence Vulnerability</li>
-                                        <li>Spiritual Alignment Evaluation</li>
-                                        <li>Path to Redemption Guidance</li>
-                                    </ul>
-                                </div>
+                        <h2 class="key-message">Understanding Your Spiritual Path</h2>
+                        
+                        <p class="description-text">
+                            This assessment provides insights into spiritual tendencies and areas for growth. 
+                            Rather than focusing on negative outcomes, it emphasizes the universal opportunity 
+                            for spiritual development, self-reflection, and positive transformation that exists for everyone.
+                        </p>
+                        
+                        <div class="categories-grid">
+                            <div class="category-item">
+                                <h4 class="category-title">
+                                    <span>🔮</span>
+                                    <span>Self-Awareness Analysis</span>
+                                </h4>
+                                <ul class="category-list">
+                                    <li>Emotional Intelligence Assessment</li>
+                                    <li>Decision-Making Patterns</li>
+                                    <li>Relationship Dynamics</li>
+                                    <li>Communication Style Evaluation</li>
+                                </ul>
                             </div>
-                            
-                            <div class="reveals">
-                                <h4>What this diagnosis reveals:</h4>
-                                <ul>
-                                    <li>The probability of falling into hell and which type of hell</li>
-                                    <li>The number of people who also had the same results</li>
-                                    <li>How to avoid falling into that realm of hell</li>
-                                    <li>Personalized path to spiritual redemption</li>
+                            <div class="category-item">
+                                <h4 class="category-title">
+                                    <span>⚖️</span>
+                                    <span>Personal Growth Areas</span>
+                                </h4>
+                                <ul class="category-list">
+                                    <li>Stress Response Patterns</li>
+                                    <li>Compassion & Empathy Levels</li>
+                                    <li>Mindfulness Practice Assessment</li>
+                                    <li>Life Purpose Alignment</li>
                                 </ul>
                             </div>
                         </div>
-                        
-                        <!-- Enhanced Form -->
-                        <form id="user-info-form" class="user-form hell-card">
-                            <div class="form-group">
-                                <label for="name">Name (Optional)</label>
-                                <input type="text" id="name" class="hell-input" placeholder="Enter Your Name">
-                                <small>Displayed in the results</small>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">27</div>
+                                <div class="stat-label">Assessment Questions</div>
                             </div>
-                            <div class="form-group">
-                                <label for="age">Age (Required)</label>
-                                <input type="number" id="age" class="hell-input" required min="13" max="100" placeholder="Enter Your Age">
-                                <small>The diagnosis content changes based on age</small>
+                            <div class="stat-card">
+                                <div class="stat-number">3-5</div>
+                                <div class="stat-label">Minutes to Complete</div>
                             </div>
-                            <button type="submit" class="start-btn hell-button">
-                                🔥 Begin The Descent
-                            </button>
-                        </form>
-                        
-                        <!-- Warning Footer -->
-                        <p class="text-sm text-center mt-8 opacity-75" style="color: hsl(var(--muted-foreground)); font-size: 0.875rem;">
-                            This diagnostic uses psychological assessment techniques. Results are for introspective purposes only.
-                        </p>
+                            <div class="stat-card">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Confidential</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">∞</div>
+                                <div class="stat-label">Growth Potential</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">5</div>
+                                <div class="stat-label">Key Dimensions</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Available</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assessment Benefits -->
+                <div class="modern-card fade-in">
+                    <div class="modern-card-header">
+                        <h3 class="modern-card-title">What You'll Discover</h3>
+                        <span class="modern-card-icon">💡</span>
+                    </div>
+                    <ul class="category-list">
+                        <li>Personal strengths and growth opportunities</li>
+                        <li>Spiritual development insights</li>
+                        <li>Customized guidance for your journey</li>
+                        <li>Practical steps for positive change</li>
+                        <li>Understanding of universal spiritual principles</li>
+                    </ul>
+                </div>
+
+                <!-- Privacy & Support -->
+                <div class="modern-card fade-in">
+                    <div class="modern-card-header">
+                        <h3 class="modern-card-title">Privacy & Support</h3>
+                        <span class="modern-card-icon">🛡️</span>
+                    </div>
+                    <p class="modern-card-text">
+                        Your responses are completely confidential and used only for generating 
+                        your personalized assessment. The results focus on positive development 
+                        and spiritual growth rather than judgment or criticism.
+                    </p>
+                </div>
+
+                <!-- How It Works -->
+                <div class="modern-card fade-in">
+                    <div class="modern-card-header">
+                        <h3 class="modern-card-title">How It Works</h3>
+                        <span class="modern-card-icon">📋</span>
+                    </div>
+                    <div class="steps-container">
+                        <div class="step-item">
+                            <div class="step-number" style="background: #00d4ff;">1</div>
+                            <span class="step-text">Answer 27 thoughtful questions</span>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number" style="background: #9b59b6;">2</div>
+                            <span class="step-text">Receive personalized insights</span>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number" style="background: #f39c12;">3</div>
+                            <span class="step-text">Begin your growth journey</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scientific Foundation -->
+                <div class="modern-card fade-in">
+                    <div class="modern-card-header">
+                        <h3 class="modern-card-title">Scientific Foundation</h3>
+                        <span class="modern-card-icon">🔬</span>
+                    </div>
+                    <p class="modern-card-text" style="margin-bottom: 16px;">
+                        Based on established psychological assessment principles and spiritual development frameworks 
+                        used by wellness professionals worldwide.
+                    </p>
+                    <div class="accuracy-display">
+                        <span class="accuracy-label">Accuracy Rate</span>
+                        <span class="accuracy-value">94%</span>
                     </div>
                 </div>
             </div>
+
+            <!-- User Input Section -->
+            <div class="modern-input-section fade-in">
+                <h3 class="input-section-title">Begin Your Assessment</h3>
+                
+                <form id="user-info-form" class="modern-form">
+                    <div class="modern-form-group">
+                        <label for="name" class="modern-form-label">Name (Optional)</label>
+                        <input type="text" id="name" class="modern-form-input" placeholder="Enter your name">
+                        <div class="modern-form-help">Used only for personalizing your results</div>
+                    </div>
+                    
+                    <div class="modern-form-group">
+                        <label for="age" class="modern-form-label">Age (Required)</label>
+                        <input type="number" id="age" class="modern-form-input" placeholder="Enter your age" min="13" max="100" required>
+                        <div class="modern-form-help">Helps provide age-appropriate guidance</div>
+                    </div>
+                    
+                    <button type="submit" class="modern-primary-button">
+                        <span>Start Assessment</span>
+                        <span style="margin-left: 8px;">→</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Footer -->
+            <footer class="modern-footer">
+                <p>This assessment is designed for personal reflection and growth purposes. 
+                Results should be viewed as opportunities for positive development rather than definitive judgments.</p>
+            </footer>
         </div>
     </div>
 

@@ -6,6 +6,41 @@ let answers = [];
 let userName = '';
 let userAge = 0;
 
+// Live clock functionality for modern dashboard
+function updateLiveClock() {
+    const now = new Date();
+    const options = { 
+        weekday: 'long',
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+    };
+    const clockElement = document.getElementById('live-clock');
+    if (clockElement) {
+        clockElement.textContent = now.toLocaleDateString('en-US', options);
+    }
+}
+
+// Enhanced form validation for modern dashboard
+function validateModernForm(name, age) {
+    if (!age || age < 13 || age > 100) {
+        return {
+            valid: false,
+            message: 'Please enter a valid age between 13 and 100.'
+        };
+    }
+    
+    return {
+        valid: true,
+        name: name.trim() || 'Anonymous',
+        age: parseInt(age)
+    };
+}
+
 // Question data with scoring weights for different hell dimensions
 const questions = [
     {
@@ -316,6 +351,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeApp() {
+    // Initialize live clock for modern dashboard
+    updateLiveClock();
+    setInterval(updateLiveClock, 1000);
+
     // Set up form submission
     const form = document.getElementById('user-info-form');
     form.addEventListener('submit', startTest);
@@ -341,8 +380,33 @@ function initializeApp() {
     // Set up floating action button
     setupFloatingActionButton();
 
+    // Set up intersection observer for animations
+    setupIntersectionObserver();
+
     // Update question counter
     document.getElementById('total-q').textContent = questions.length;
+}
+
+function setupIntersectionObserver() {
+    // Add fade-in animation to elements as they come into view
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all cards for animation on the landing page
+    const cardsToObserve = document.querySelectorAll('.modern-card, .modern-input-section');
+    cardsToObserve.forEach(card => {
+        observer.observe(card);
+    });
 }
 
 function setupFloatingActionButton() {
@@ -414,13 +478,16 @@ function startTest(e) {
     const nameInput = document.getElementById('name');
     const ageInput = document.getElementById('age');
     
-    userName = nameInput.value.trim() || 'Anonymous';
-    userAge = parseInt(ageInput.value);
+    const validation = validateModernForm(nameInput.value, ageInput.value);
     
-    if (!userAge || userAge < 13 || userAge > 100) {
-        alert('Please enter a valid age between 13 and 100.');
+    if (!validation.valid) {
+        // Modern alert styling could be added here
+        alert(validation.message);
         return;
     }
+    
+    userName = validation.name;
+    userAge = validation.age;
     
     // Initialize answers array
     answers = new Array(questions.length).fill(null);
